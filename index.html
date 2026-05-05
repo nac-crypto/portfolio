@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jilani Nacere — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f4f2ee;
+  --bg2: #eceae5;
+  --ink: #111110;
+  --ink2: #3a3a38;
+  --muted: #8a8a85;
+  --rule: #d8d5cf;
+  --tag: #e8e4dc;
+  --ok: #3cb85c;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --r: 3px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--rule) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--ink); }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  background: rgba(244,242,238,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 48px;
+}
+.nav-id { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+.nav-id span { color: var(--muted); font-weight: 300; }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  font-size: 11px; color: var(--muted);
+  padding: 4px 14px;
+  border-left: 1px solid var(--rule);
+  transition: color 0.15s, background 0.15s;
+  letter-spacing: 0.06em;
+}
+.nav-links li:last-child a { border-right: 1px solid var(--rule); }
+.nav-links a:hover { color: var(--ink); background: var(--tag); }
+.nav-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+.status-led { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+
+#hero {
+  position: relative; z-index: 1;
+  min-height: 100vh; padding-top: 48px;
+  display: grid; grid-template-columns: 48px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-lines {
+  border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column;
+  user-select: none; overflow: hidden;
+}
+.hero-ln {
+  font-size: 10px; color: var(--rule);
+  text-align: right; padding: 0 10px;
+  height: 28px; display: flex;
+  align-items: center; justify-content: flex-end; flex-shrink: 0;
+}
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 48px); }
+.hero-left {
+  padding: 72px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--rule);
+}
+.hero-eyebrow {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-eyebrow::before { content: '// '; color: var(--rule); }
+.hero-name,
+.hero-name-sub {
+  font-family: var(--mono);
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.hero-name { font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.hero-name-sub { font-weight: 300; color: var(--muted); margin-bottom: 40px; }
+.hero-desc {
+  font-family: var(--sans); font-size: 14px; font-weight: 300;
+  color: var(--ink2); line-height: 1.8; max-width: 440px; margin-bottom: 48px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em; padding: 10px 20px;
+  border-radius: var(--r); cursor: pointer; border: none; transition: all 0.18s;
+}
+.btn-solid { background: var(--ink); color: var(--bg); }
+.btn-solid:hover { background: var(--ink2); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+.btn-outline:hover { border-color: var(--ink); background: var(--tag); }
+.hero-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule);
+}
+.chip {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+  padding: 4px 10px; border-radius: 2px;
+  border: 1px solid var(--rule); color: var(--ink2);
+  background: var(--bg); text-transform: uppercase;
+}
+.hero-right {
+  padding: 72px 48px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--bg2);
+}
+.snippet-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+}
+.snippet-filename { font-size: 11px; color: var(--muted); }
+.snippet-lang {
+  margin-left: auto; font-size: 10px; color: var(--muted);
+  background: var(--tag); padding: 2px 8px;
+  border-radius: 2px; border: 1px solid var(--rule);
+}
+.code-snippet { font-size: 12px; line-height: 1.9; color: var(--ink2); }
+.code-snippet .kw { color: #9b6dcc; font-weight: 500; }
+.code-snippet .fn { color: #2a7bbf; }
+.code-snippet .str { color: #b36a0e; }
+.code-snippet .cm { color: var(--muted); font-style: italic; }
+.code-snippet .num { color: #5a7f3e; }
+.code-snippet .cl { color: #2a7bbf; font-weight: 500; }
+.code-snippet .i1 { padding-left: 20px; display: block; }
+.code-snippet .i2 { padding-left: 40px; display: block; }
+
+.section {
+  position: relative; z-index: 1;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 48px 240px 1fr;
+}
+.section-ln-col {
+  border-right: 1px solid var(--rule);
+  padding-top: 48px; display: flex; flex-direction: column;
+  align-items: flex-end; padding-right: 10px;
+  user-select: none; overflow: hidden;
+}
+.section-ln { font-size: 10px; color: var(--rule); height: 22.75px; line-height: 22.75px; flex-shrink: 0; }
+.section-sidebar {
+  padding: 48px 32px; border-right: 1px solid var(--rule);
+  background: var(--bg2); display: flex; flex-direction: column; gap: 4px;
+}
+.sidebar-num { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 8px; }
+.sidebar-title { font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1.2; letter-spacing: -0.01em; }
+.sidebar-sub { font-size: 11px; color: var(--muted); margin-top: 16px; font-weight: 300; line-height: 1.6; }
+.section-body { padding: 48px 56px; }
+
+.about-text {
+  font-family: var(--sans); font-size: 15px; font-weight: 300;
+  color: var(--ink2); line-height: 1.85; max-width: 640px; margin-bottom: 24px;
+}
+.about-text strong { font-weight: 500; color: var(--ink); }
+.about-table { border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; max-width: 560px; margin-top: 28px; }
+.about-row { display: grid; grid-template-columns: 150px 1fr; border-bottom: 1px solid var(--rule); }
+.about-row:last-child { border-bottom: none; }
+.about-key {
+  font-size: 11px; color: var(--muted); padding: 10px 14px;
+  background: var(--bg2); border-right: 1px solid var(--rule); letter-spacing: 0.04em;
+}
+.about-key::before { content: '→ '; color: var(--rule); }
+.about-val { font-size: 11px; color: var(--ink); padding: 10px 14px; }
+
+.cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 620px; }
+.cv-item {
+  border: 1px solid var(--rule); border-radius: var(--r);
+  overflow: hidden; text-decoration: none; display: block;
+  transition: all 0.2s; background: var(--bg);
+}
+.cv-item:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 4px 4px 0 var(--rule); }
+.cv-item-head {
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  padding: 8px 14px; display: flex; align-items: center;
+  justify-content: space-between; font-size: 10px; color: var(--muted);
+}
+.cv-item-head .ext {
+  font-weight: 700; background: var(--ink); color: var(--bg);
+  padding: 1px 6px; border-radius: 2px; font-size: 9px; letter-spacing: 0.08em;
+}
+.cv-item-body { padding: 28px 20px 24px; display: flex; flex-direction: column; gap: 6px; }
+.cv-item-icon { font-size: 22px; margin-bottom: 6px; }
+.cv-item h3 { font-size: 13px; font-weight: 600; color: var(--ink); }
+.cv-item p { font-size: 11px; color: var(--muted); font-family: var(--sans); font-weight: 300; }
+.cv-item-action {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px; font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: 0.04em;
+}
+.cv-item-action::after { content: '→'; transition: transform 0.2s; }
+.cv-item:hover .cv-item-action::after { transform: translateX(3px); }
+
+.timeline { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; max-width: 760px; }
+.tl-item { display: grid; grid-template-columns: 120px 1fr; border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+.tl-item:last-child { border-bottom: none; }
+.tl-item:hover { background: var(--bg2); }
+.tl-year { padding: 20px 16px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
+.tl-year-val { font-size: 11px; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; }
+.tl-year-type { font-size: 10px; color: var(--muted); }
+.tl-info { padding: 20px 20px 20px 16px; display: flex; flex-direction: column; gap: 2px; }
+.tl-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+.tl-place { font-size: 11px; color: var(--muted); font-family: var(--sans); font-weight: 300; }
+.tl-desc { font-family: var(--sans); font-size: 12px; color: var(--ink2); line-height: 1.6; margin-top: 6px; }
+.tl-badge {
+  display: inline-flex; align-items: center; margin-top: 8px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+  padding: 2px 8px; border-radius: 2px;
+  background: var(--tag); border: 1px solid var(--rule); color: var(--ink2);
+  text-transform: uppercase; width: fit-content;
+}
+
+.projects-list { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; max-width: 860px; }
+.project-item {
+  display: grid; grid-template-columns: 1fr auto;
+  width: 100%; text-align: left; font-family: inherit;
+  border: 0; border-bottom: 1px solid var(--rule);
+  background: transparent; color: inherit;
+  cursor: pointer; transition: background 0.15s;
+}
+.project-item:last-child { border-bottom: none; }
+.project-item:hover { background: var(--bg2); }
+.project-main { padding: 24px; display: flex; flex-direction: column; gap: 6px; }
+.project-header { display: flex; align-items: center; gap: 12px; }
+.project-num { font-size: 10px; color: var(--muted); min-width: 28px; }
+.project-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+.project-desc { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--ink2); line-height: 1.7; padding-left: 40px; }
+.project-tags { display: flex; gap: 6px; flex-wrap: wrap; padding-left: 40px; margin-top: 4px; }
+.ptag { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 2px; border: 1px solid var(--rule); color: var(--ink2); text-transform: uppercase; }
+.project-arrow { padding: 24px 20px; display: flex; align-items: center; font-size: 16px; color: var(--rule); transition: color 0.15s, transform 0.15s; }
+.project-item:hover .project-arrow { color: var(--ink); transform: translateX(3px); }
+
+.skills-cols { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; max-width: 760px; }
+.skills-col { border-right: 1px solid var(--rule); }
+.skills-col:last-child { border-right: none; }
+.skills-col-head { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; background: var(--bg2); border-bottom: 1px solid var(--rule); }
+.skill-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 16px; border-bottom: 1px solid var(--rule); transition: background 0.12s; gap: 12px; }
+.skill-row:last-child { border-bottom: none; }
+.skill-row:hover { background: var(--tag); }
+.skill-name { font-size: 12px; color: var(--ink); }
+.skill-level { display: flex; gap: 3px; }
+.skill-dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; }
+.skill-dot.f { background: var(--ink); border-color: var(--ink); }
+.certs-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 28px 0 10px;
+}
+.certs-section-title:first-of-type { margin-top: 24px; }
+.certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 760px; }
+.cert-item { border: 1px solid var(--rule); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.15s; background: var(--bg); }
+.cert-item:hover { border-color: var(--ink); background: var(--bg2); }
+.cert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.cert-name { font-size: 12px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.cert-source { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: var(--sans); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 780px; }
+.contact-links-col { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
+.contact-link-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--rule); transition: background 0.15s; text-decoration: none; color: inherit; }
+.contact-link-row:last-child { border-bottom: none; }
+.contact-link-row:hover { background: var(--bg2); }
+.contact-link-icon { font-size: 15px; width: 28px; text-align: center; flex-shrink: 0; font-style: normal; }
+.contact-link-text h4 { font-size: 12px; font-weight: 500; color: var(--ink); }
+.contact-link-text p { font-size: 11px; color: var(--muted); font-family: var(--sans); font-weight: 300; }
+.contact-arrow { margin-left: auto; font-size: 13px; color: var(--rule); transition: color 0.15s; }
+.contact-link-row:hover .contact-arrow { color: var(--ink); }
+.contact-form-col { display: flex; flex-direction: column; gap: 12px; }
+.field-group { display: flex; flex-direction: column; gap: 5px; }
+.field-label { font-size: 10px; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.field-input, .field-textarea { font-family: var(--mono); font-size: 12px; background: var(--bg); border: 1px solid var(--rule); border-radius: var(--r); padding: 9px 12px; color: var(--ink); outline: none; transition: border-color 0.15s; resize: none; }
+.field-input:focus, .field-textarea:focus { border-color: var(--ink); }
+.field-textarea { height: 100px; }
+.btn-submit { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 10px 20px; background: var(--ink); color: var(--bg); border: none; border-radius: var(--r); cursor: pointer; width: 100%; transition: all 0.18s; text-transform: uppercase; }
+.btn-submit:hover { background: var(--ink2); transform: translateY(-1px); }
+
+footer { position: relative; z-index: 1; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 48px 1fr; }
+.footer-ln-col { border-right: 1px solid var(--rule); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 56px; font-size: 11px; color: var(--muted); }
+.footer-inner strong { color: var(--ink); font-weight: 500; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal.open { display: flex; }
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17,17,16,0.45);
+  backdrop-filter: blur(6px);
+}
+.modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: min(82vh, 760px);
+  overflow: auto;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: 10px 10px 0 rgba(17,17,16,0.18);
+}
+.modal-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+}
+.modal-kicker { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.modal-title { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.modal-close {
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: var(--r);
+  font-size: 18px;
+  line-height: 1;
+}
+.modal-close:hover { border-color: var(--ink); background: var(--tag); }
+.modal-body { padding: 24px; display: grid; gap: 22px; }
+.modal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.modal-box { border: 1px solid var(--rule); background: var(--bg); border-radius: var(--r); overflow: hidden; }
+.modal-box h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); background: var(--bg2); padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+.modal-box p { font-family: var(--sans); font-size: 13px; color: var(--ink2); line-height: 1.7; padding: 12px; }
+.modal-list { display: grid; gap: 8px; }
+.modal-list li { margin-left: 18px; font-family: var(--sans); color: var(--ink2); font-size: 13px; line-height: 1.65; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-link { display: inline-flex; width: fit-content; margin-top: 2px; }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  #hero { grid-template-columns: 0 1fr; }
+  .hero-lines { display: none; }
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 48px 28px; }
+  .section { grid-template-columns: 1fr; }
+  .section-ln-col, .section-sidebar { display: none; }
+  .section-body { padding: 48px 28px; }
+  .cv-grid, .contact-grid, .skills-cols, .certs-grid, .modal-grid { grid-template-columns: 1fr; }
+  .about-row, .tl-item { grid-template-columns: 1fr; }
+  .about-key, .tl-year { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .project-desc, .project-tags { padding-left: 0; }
+  footer { grid-template-columns: 1fr; }
+  .footer-ln-col { display: none; }
+  .footer-inner { padding: 16px 28px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-id">jilani.nacere<span>.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">à_propos</a></li>
+    <li><a href="#cv">cv</a></li>
+    <li><a href="#parcours">parcours</a></li>
+    <li><a href="#projets">projets</a></li>
+    <li><a href="#competences">compétences</a></li>
+    <li><a href="#veille">veille</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-led"></div>recherche alternance 3 ans</div>
+</nav>
+
+<section id="hero">
+  <div class="hero-lines" id="heroLines"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">BTS SIO — option SLAM</div>
+      <div class="hero-name">Jilani</div>
+      <div class="hero-name-sub">Nacere</div>
+      <p class="hero-desc">Étudiant en BTS SIO option SLAM à l’ESUPEC Lycée Sainte-Marie de Cholet, candidat au cycle ingénieur en numérique et à la recherche d’une alternance de 3 ans. Je conçois des applications web utiles, propres et orientées utilisateur.</p>
+      <div class="hero-btns">
+        <a href="#projets" class="btn btn-solid">voir les projets</a>
+        <a href="#contact" class="btn btn-outline">me contacter</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip">PHP</span><span class="chip">Python</span><span class="chip">JavaScript</span>
+        <span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Docker</span><span class="chip">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="snippet-header">
+        <span class="snippet-filename">Développeur.php</span>
+        <span class="snippet-lang">PHP 8.2</span>
+      </div>
+      <div class="code-snippet">
+<span class="kw">class</span> <span class="cl">Développeur</span> {<br/>
+<span class="i1"><span class="kw">private</span> string <span class="fn">$nom</span>       = <span class="str">"Jilani Nacere"</span>;</span>
+<span class="i1"><span class="kw">private</span> string <span class="fn">$formation</span> = <span class="str">"BTS SIO SLAM"</span>;</span>
+<span class="i1"><span class="kw">private</span> string <span class="fn">$objectif</span>  = <span class="str">"Cycle ingénieur numérique"</span>;</span>
+<span class="i1"><span class="kw">private</span> array  <span class="fn">$stack</span>     = [</span>
+<span class="i2"><span class="str">"PHP"</span>, <span class="str">"JavaScript"</span>, <span class="str">"Python"</span>,</span>
+<span class="i2"><span class="str">"MySQL"</span>, <span class="str">"GitHub"</span>, <span class="str">"Docker"</span></span>
+<span class="i1">];</span>
+<br/>
+<span class="i1"><span class="kw">public function</span> <span class="fn">getContact</span>(): string {</span>
+<span class="i2"><span class="kw">return</span> <span class="str">"jilanimus@gmail.com"</span>;</span>
+<span class="i1">}</span>
+<br/>
+<span class="i1"><span class="cm">// Recherche une alternance de 3 ans</span></span>
+<span class="i1"><span class="kw">public function</span> <span class="fn">isAvailable</span>(): bool {</span>
+<span class="i2"><span class="kw">return</span> <span class="num">true</span>;</span>
+<span class="i1">}</span>
+}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section" id="about">
+  <div class="section-ln-col" id="aboutLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 01</div>
+    <div class="sidebar-title">À<br/>propos</div>
+    <div class="sidebar-sub">Profil,<br/>objectif, mobilité.</div>
+  </div>
+  <div class="section-body">
+    <p class="about-text reveal">Je m’appelle <strong>Jilani Nacere</strong>, étudiant en BTS SIO option SLAM à <strong>l’ESUPEC Lycée Sainte-Marie de Cholet</strong>. Curieux, rigoureux et organisé, je développe des solutions web et applicatives en mettant l’accent sur la clarté du code, la sécurité et l’expérience utilisateur.</p>
+    <p class="about-text reveal">Mon objectif est de poursuivre vers un <strong>cycle ingénieur en numérique</strong> en alternance sur 3 ans, afin de renforcer mes compétences en développement, conception de bases de données, architecture d’applications et méthodes de projet.</p>
+    <p class="about-text reveal">Mes centres d’intérêt, notamment <strong>l’intelligence artificielle</strong> et le <strong>sport</strong>, m’aident à rester curieux, discipliné et motivé dans mes apprentissages.</p>
+    <div class="about-table reveal">
+      <div class="about-row"><div class="about-key">Localisation</div><div class="about-val">Cholet, France</div></div>
+      <div class="about-row"><div class="about-key">Adresse</div><div class="about-val">12 Avenue des Câlins</div></div>
+      <div class="about-row"><div class="about-key">Formation</div><div class="about-val">BTS SIO option SLAM — ESUPEC Lycée Sainte-Marie</div></div>
+      <div class="about-row"><div class="about-key">Objectif</div><div class="about-val">Alternance 3 ans — cycle ingénieur en numérique</div></div>
+      <div class="about-row"><div class="about-key">Mobilité</div><div class="about-val">Permis B</div></div>
+      <div class="about-row"><div class="about-key">Langues</div><div class="about-val">Français · Anglais B2 · Espagnol B1 · Arabe C1</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="cv">
+  <div class="section-ln-col" id="cvLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 02</div>
+    <div class="sidebar-title">Docu&shy;ments</div>
+    <div class="sidebar-sub">CV &amp; supports<br/>de candidature.</div>
+  </div>
+  <div class="section-body">
+    <div class="cv-grid reveal">
+      <a href="CV Nacere Jilani Alternance.pdf" download class="cv-item">
+        <div class="cv-item-head"><span>curriculum_vitae</span><span class="ext">PDF</span></div>
+        <div class="cv-item-body">
+          <div class="cv-item-icon">📄</div>
+          <h3>Curriculum Vitae</h3>
+          <p>Formation, expériences, compétences &amp; langues</p>
+          <span class="cv-item-action">Télécharger</span>
+        </div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1COin_Q7iF-PANwR6XqQ9DmR0qqeYcxId/edit?usp=sharing&ouid=105297147068888190082&rtpof=true&sd=true" class="cv-item">
+        <div class="cv-item-head"><span>tableau_competences</span><span class="ext">XLSX</span></div>
+        <div class="cv-item-body">
+          <div class="cv-item-icon">📊</div>
+          <h3>Tableau de compétences</h3>
+          <p>Synthèse des compétences acquises en BTS SIO</p>
+          <span class="cv-item-action">Consulter</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="parcours">
+  <div class="section-ln-col" id="parcoursLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 03</div>
+    <div class="sidebar-title">Par&shy;cours</div>
+    <div class="sidebar-sub">Formations &amp;<br/>expériences.</div>
+  </div>
+  <div class="section-body">
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">2024–2026</span><span class="tl-year-type">en cours</span></div>
+        <div class="tl-info">
+          <div class="tl-title">BTS SIO option SLAM</div>
+          <div class="tl-place">ESUPEC Lycée Sainte-Marie — Cholet</div>
+          <p class="tl-desc">Service Informatique aux Organisations, spécialité développement logiciel et applications métiers.</p>
+          <span class="tl-badge">Formation</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">05/01–13/02/2026</span><span class="tl-year-type">stage</span></div>
+        <div class="tl-info">
+          <div class="tl-title">Centre Hospitalier de Cholet</div>
+          <div class="tl-place">Stagiaire développeur</div>
+          <p class="tl-desc">Application web de gestion des astreintes médicales, serveur Apache, authentification NTLM et extension Chromium avec commandes vocales.</p>
+          <span class="tl-badge">Stage</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">12/05–25/06/2025</span><span class="tl-year-type">stage</span></div>
+        <div class="tl-info">
+          <div class="tl-title">Nomad Barber Shop</div>
+          <div class="tl-place">Stagiaire développeur web — Cholet</div>
+          <p class="tl-desc">Réalisation complète d’un site vitrine responsive, recueil des besoins, adaptation du design et livraison dans les délais.</p>
+          <span class="tl-badge">Stage</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">2023–2024</span><span class="tl-year-type">diplôme</span></div>
+        <div class="tl-info">
+          <div class="tl-title">Baccalauréat Général</div>
+          <div class="tl-place">Spécialités Mathématiques / Physique-Chimie</div>
+          <p class="tl-desc">Diplôme obtenu avec mention assez bien.</p>
+          <span class="tl-badge">Diplôme</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">2020–2021</span><span class="tl-year-type">diplôme</span></div>
+        <div class="tl-info">
+          <div class="tl-title">Diplôme National du Brevet</div>
+          <div class="tl-place">Mention Bien</div>
+          <span class="tl-badge">Diplôme</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><span class="tl-year-val">2021</span><span class="tl-year-type">stage</span></div>
+        <div class="tl-info">
+          <div class="tl-title">ATOL Opticien</div>
+          <div class="tl-place">Stage d’observation et d’immersion professionnelle</div>
+          <p class="tl-desc">Mise en rayon, organisation des produits, gestion d’appels, coordination fournisseurs et conseil client.</p>
+          <span class="tl-badge">Observation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="projets">
+  <div class="section-ln-col" id="projetsLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 04</div>
+    <div class="sidebar-title">Pro&shy;jets</div>
+    <div class="sidebar-sub">PPE, ateliers<br/>et stage.</div>
+  </div>
+  <div class="section-body">
+    <div class="projects-list reveal">
+      <button class="project-item" type="button" data-project="ppe0">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">01.</span><span class="project-title">PPE0 — Réseau école Victor Hugo</span></div>
+          <p class="project-desc">Création d’un réseau d’école avec fichiers partagés, dossiers personnels, communication utilisateurs et règles de sécurité.</p>
+          <div class="project-tags"><span class="ptag">Réseau</span><span class="ptag">Droits</span><span class="ptag">Sécurité</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="goeat">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">02.</span><span class="project-title">AP1 — Go Eat</span></div>
+          <p class="project-desc">Site de commande de plats avec menus, panier et validation de commande connecté à une base de données.</p>
+          <div class="project-tags"><span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">BDD</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="toutou">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">03.</span><span class="project-title">AP2 — Toutou Relax</span></div>
+          <p class="project-desc">Site web de gestion d’une pension canine avec calendrier, disponibilités et réservations.</p>
+          <div class="project-tags"><span class="ptag">PHP</span><span class="ptag">Bootstrap</span><span class="ptag">MySQL</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="hippique">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">04.</span><span class="project-title">AP3 — Course hippique</span></div>
+          <p class="project-desc">Application de gestion des hippodromes, jockeys, chevaux, courses, équipes participantes et temps.</p>
+          <div class="project-tags"><span class="ptag">PHP</span><span class="ptag">MVC</span><span class="ptag">SQL</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="ap4">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">05.</span><span class="project-title">AP4 — Projet Sigeansud</span></div>
+          <p class="project-desc">Solution applicative pour digitaliser la gestion du placement, des transferts et des sorties d’animaux dans un parc animalier.</p>
+          <div class="project-tags"><span class="ptag">Android</span><span class="ptag">SQLite</span><span class="ptag">API REST</span><span class="ptag">Symfony 7</span><span class="ptag">MySQL</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="nomad">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">06.</span><span class="project-title">Stage — Site vitrine Nomad Barber Shop</span></div>
+          <p class="project-desc">Site responsive présentant les services, tarifs, horaires et l’identité visuelle du salon.</p>
+          <div class="project-tags"><span class="ptag">HTML/CSS</span><span class="ptag">Responsive</span><span class="ptag">UX/UI</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+      <button class="project-item" type="button" data-project="hopital">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">07.</span><span class="project-title">Stage — Centre Hospitalier de Cholet</span></div>
+          <p class="project-desc">Application de gestion des astreintes médicales, authentification NTLM et extension Chromium.</p>
+          <div class="project-tags"><span class="ptag">PHP</span><span class="ptag">Apache</span><span class="ptag">NTLM</span><span class="ptag">Chromium</span></div>
+        </div>
+        <div class="project-arrow">→</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="competences">
+  <div class="section-ln-col" id="compLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 05</div>
+    <div class="sidebar-title">Compé&shy;tences</div>
+    <div class="sidebar-sub">Stack, méthodes<br/>et certifications.</div>
+  </div>
+  <div class="section-body">
+    <div class="skills-cols reveal">
+      <div class="skills-col">
+        <div class="skills-col-head">Développement & BDD</div>
+        <div class="skill-row"><span class="skill-name">HTML / CSS</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">PHP</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">C# / C++</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">MySQL / SQL Server</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Triggers / conception BDD</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+      </div>
+      <div class="skills-col">
+        <div class="skills-col-head">Outils & méthodes</div>
+        <div class="skill-row"><span class="skill-name">GitHub</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Docker</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Dev API</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Looping / Merise</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Méthode Agile</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Capacité d’analyse</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Organisation / rigueur</span><div class="skill-level"><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot f"></div><div class="skill-dot"></div></div></div>
+      </div>
+    </div>
+    <div class="certs-section-title reveal">Certifications reconnues</div>
+    <div class="certs-grid reveal">
+      <a href="BTSPREPA.png" target="_blank" rel="noopener" class="cert-item">
+        <div class="cert-icon">🎓</div>
+        <div><div class="cert-name">Cycle Prépa ESAIP</div><div class="cert-source">Certificat BTS Prépa</div></div>
+      </a>
+      <a href="certification-pix-20251211.pdf" target="_blank" rel="noopener" class="cert-item">
+        <div class="cert-icon">🏅</div>
+        <div><div class="cert-name">Certification PIX</div><div class="cert-source">Compétences numériques</div></div>
+      </a>
+      <a href="" target="_blank" rel="noopener" class="cert-item">
+        <div class="cert-icon">✍️</div>
+        <div><div class="cert-name">Projet Voltaire (en cours)</div><div class="cert-source">Expression & orthographe</div></div>
+      </a>
+    </div>
+
+    <div class="certs-section-title reveal">Certifications OpenClassrooms</div>
+    <div class="certs-grid reveal">
+      <a href="https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">01</div><div><div class="cert-name">JavaScript</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">02</div><div><div class="cert-name">PHP & MySQL</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/8204091-utilisez-chatgpt-pour-ameliorer-votre-productivite" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">03</div><div><div class="cert-name">ChatGPT</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/7168871-apprenez-les-bases-du-langage-python" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">04</div><div><div class="cert-name">Python</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/1894236-apprenez-a-programmer-en-c" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">05</div><div><div class="cert-name">C++</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/7818671-requetez-une-base-de-donnees-avec-sql" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">06</div><div><div class="cert-name">SQL</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/7162856-gerez-du-code-avec-git-et-github" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">07</div><div><div class="cert-name">Git & GitHub</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">08</div><div><div class="cert-name">MVC</div><div class="cert-source">OpenClassrooms</div></div></a>
+      <a href="https://openclassrooms.com/fr/courses/8264046-construisez-un-site-web-a-l-aide-du-framework-symfony-7" target="_blank" rel="noopener" class="cert-item"><div class="cert-icon">09</div><div><div class="cert-name">Symfony</div><div class="cert-source">OpenClassrooms</div></div></a>
+    </div>
+  </div>
+</div>
+
+
+<div class="section" id="veille">
+  <div class="section-ln-col" id="veilleLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 06</div>
+    <div class="sidebar-title">Veille</div>
+    <div class="sidebar-sub">IA générative &amp;<br/>développement logiciel.</div>
+  </div>
+  <div class="section-body">
+    <p class="about-text reveal">Cette veille technologique porte sur <strong>l’impact de l’intelligence artificielle générative sur le développement logiciel</strong>. Elle suit l’évolution des assistants de code, leurs apports pour la productivité, mais aussi leurs limites en matière de qualité, sécurité et esprit critique.</p>
+    <p class="about-text reveal">L’objectif est de comprendre comment les outils comme ChatGPT, GitHub Copilot ou les agents IA modifient le métier de développeur : génération de code, aide au débogage, documentation, tests automatisés et revue de code.</p>
+
+    <div class="projects-list reveal">
+      <a class="project-item" href="https://github.blog/ai-and-ml/generative-ai/how-ai-is-reshaping-developer-choice-and-octoverse-data-proves-it/" target="_blank" rel="noopener">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">01.</span><span class="project-title">GitHub — L’IA influence les choix des développeurs</span></div>
+          <p class="project-desc">GitHub explique que l’IA devient un critère important dans le choix des technologies. Les développeurs privilégient de plus en plus les outils compatibles avec les assistants IA, car ils facilitent l’écriture, la compréhension et la maintenance du code.</p>
+          <div class="project-tags"><span class="ptag">Fév. 2026</span><span class="ptag">GitHub</span><span class="ptag">Tendances dev</span></div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <a class="project-item" href="https://hellofuture.orange.com/en/skill-development-documentation-testing-agent-orchestration-ai-is-redefining-the-daily-lives-of-developers/" target="_blank" rel="noopener">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">02.</span><span class="project-title">Orange — L’IA redéfinit le quotidien des développeurs</span></div>
+          <p class="project-desc">L’article montre que l’IA générative ne sert pas seulement à produire du code. Elle aide aussi à documenter, tester, comprendre un projet existant et orchestrer des agents spécialisés, ce qui fait évoluer le rôle du développeur vers plus de supervision.</p>
+          <div class="project-tags"><span class="ptag">Mars 2026</span><span class="ptag">Orange</span><span class="ptag">Métier</span></div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <a class="project-item" href="https://openssf.org/blog/2025/12/29/ai-software-development-security-tips-and-the-future-part-1/" target="_blank" rel="noopener">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">03.</span><span class="project-title">OpenSSF — IA, développement et sécurité</span></div>
+          <p class="project-desc">OpenSSF rappelle que l’IA est désormais très utilisée dans le développement, mais que ses résultats peuvent contenir des erreurs. L’article insiste sur la nécessité de vérifier le code généré, surtout pour éviter les vulnérabilités de sécurité.</p>
+          <div class="project-tags"><span class="ptag">Déc. 2025</span><span class="ptag">Sécurité</span><span class="ptag">Bonnes pratiques</span></div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <a class="project-item" href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" target="_blank" rel="noopener">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">04.</span><span class="project-title">METR — L’IA ne rend pas toujours plus rapide</span></div>
+          <p class="project-desc">Cette étude nuance l’idée que l’IA accélère automatiquement le travail. Sur des projets open source complexes, certains développeurs expérimentés ont été ralentis, notamment à cause du temps passé à comprendre, corriger ou vérifier les propositions de l’IA.</p>
+          <div class="project-tags"><span class="ptag">Juil. 2025</span><span class="ptag">Étude</span><span class="ptag">Productivité</span></div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <a class="project-item" href="https://devblogs.microsoft.com/premier-developer/how-does-generative-ai-impact-developer-experience/" target="_blank" rel="noopener">
+        <div class="project-main">
+          <div class="project-header"><span class="project-num">05.</span><span class="project-title">Microsoft — Impact sur l’expérience développeur</span></div>
+          <p class="project-desc">Microsoft met en avant les apports de l’IA générative sur l’expérience développeur : aide à la revue de code, réduction de certaines tâches répétitives et amélioration de la collaboration. L’article montre aussi que l’intégration doit rester accompagnée par des pratiques de qualité.</p>
+          <div class="project-tags"><span class="ptag">Mars 2025</span><span class="ptag">Microsoft</span><span class="ptag">DevEx</span></div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+    </div>
+
+    <p class="about-text reveal" style="margin-top:28px;">Grâce à cette veille, je constate que l’IA générative devient un outil d’assistance puissant, mais qu’elle ne remplace pas les compétences fondamentales du développeur. Elle nécessite toujours une analyse humaine, des tests, une compréhension du besoin métier et une vigilance sur la sécurité.</p>
+  </div>
+</div>
+
+<div class="section" id="contact">
+  <div class="section-ln-col" id="contactLn"></div>
+  <div class="section-sidebar">
+    <div class="sidebar-num">// 07</div>
+    <div class="sidebar-title">Con&shy;tact</div>
+    <div class="sidebar-sub">Échangeons<br/>ensemble.</div>
+  </div>
+  <div class="section-body">
+    <div class="contact-grid reveal">
+      <div class="contact-links-col">
+        <a href="mailto:jilanimus@gmail.com" class="contact-link-row">
+          <span class="contact-link-icon">✉</span>
+          <div class="contact-link-text"><h4>Email</h4><p>jilanimus@gmail.com</p></div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a href="tel:+33762955666" class="contact-link-row">
+          <span class="contact-link-icon">☎</span>
+          <div class="contact-link-text"><h4>Téléphone</h4><p>07 62 95 56 66</p></div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jilani-nacere-99762734a" target="_blank" rel="noopener" class="contact-link-row">
+          <span class="contact-link-icon" style="font-size:11px;font-weight:700;">in</span>
+          <div class="contact-link-text"><h4>LinkedIn</h4><p>linkedin.com/in/jilani-nacere</p></div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        
+      </div>
+      <form class="contact-form-col" action="https://formspree.io/f/mgodyoqp" method="POST">
+        <input id="nom" name="nom" class="field-input" type="text" placeholder="Nom" required>
+        <input id="email" name="email" class="field-input" type="email" placeholder="Email" required>
+        <input id="sujet" name="sujet" class="field-input" type="text" placeholder="Sujet">
+        <textarea id="message" name="message" class="field-textarea" placeholder="Votre message..." required></textarea>
+        <button class="btn-submit" type="submit">envoyer le message →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-ln-col"></div>
+  <div class="footer-inner">
+    <span>© 2026 <strong>Jilani Nacere</strong></span>
+    <span>BTS SIO — option SLAM</span>
+    <span>portfolio.html</span>
+  </div>
+</footer>
+
+<div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close="true"></div>
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>
+        <div class="modal-kicker" id="modalKicker">Projet</div>
+        <h3 class="modal-title" id="modalTitle">Titre du projet</h3>
+      </div>
+      <button class="modal-close" type="button" aria-label="Fermer la fenêtre" data-close="true">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const projects = {
+  ppe0: {
+    kicker: 'PPE0 · Réseau école Victor Hugo',
+    title: 'Création d’un réseau pour une école',
+    tags: ['Réseau', 'Droits utilisateurs', 'Dossiers partagés', 'Sécurité'],
+    contexte: 'Ce PPE consistait à créer un réseau pour une école avec fichiers partagés et personnels, communication entre utilisateurs et contraintes de sécurité.',
+    realisation: 'J’étais chargé des groupes utilisateurs, des droits d’accès, des dossiers personnels automatiques et des règles de sécurité des mots de passe.',
+    appris: 'J’ai appris le fonctionnement du partage de dossiers, la gestion des accès et les principes de sécurité liés aux mots de passe.',
+    missions: ['Création et organisation des groupes utilisateurs', 'Paramétrage des droits d’accès', 'Mise en place des dossiers personnels automatiques', 'Application de règles de sécurité']
+  },
+  goeat: {
+    kicker: 'AP1 · Go Eat',
+    title: 'Site de commande avec panier',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Base de données'],
+    contexte: 'Ce PPE avait pour objectif de créer un site permettant de choisir des plats dans des menus et de valider un panier pour passer commande.',
+    realisation: 'J’ai réalisé la page “Qui sommes-nous” en HTML, CSS et JavaScript. J’ai également développé un système de panier et travaillé la connexion avec une base de données.',
+    appris: 'J’ai progressé en HTML/CSS, en JavaScript et dans la manipulation d’une base de données pour réaliser des actions comme la validation d’un panier.',
+    missions: ['Création d’une page de présentation', 'Développement d’un panier', 'Préparation de la validation de commande', 'Travail sur l’interface utilisateur']
+  },
+  toutou: {
+    kicker: 'AP2 · Toutou Relax',
+    title: 'Gestion d’une pension canine',
+    tags: ['PHP', 'HTML/CSS', 'JavaScript', 'Bootstrap', 'MySQL'],
+    contexte: 'Ce PPE avait pour but la réalisation d’un site web dédié à la gestion d’une pension canine.',
+    realisation: 'J’ai réalisé la page “À propos” en HTML, CSS et JavaScript avec Bootstrap pour le responsive. J’ai aussi développé un calendrier connecté à la base de données affichant les places disponibles, ainsi qu’un système de gestion des réservations.',
+    appris: 'Ce projet m’a permis de me perfectionner en PHP, notamment sur la gestion des chiens et du calendrier, tout en améliorant mes compétences en responsive design.',
+    missions: ['Page À propos responsive', 'Calendrier de disponibilités', 'Connexion à la base de données', 'Gestion des réservations']
+  },
+  hippique: {
+    kicker: 'AP3 · Course hippique',
+    title: 'Gestion de courses, jockeys et chevaux',
+    tags: ['PHP', 'MVC', 'SQL', 'Gestion'],
+    contexte: 'Ce PPE avait pour but de permettre à l’administrateur de gérer les hippodromes, jockeys et chevaux, et au gestionnaire de gérer les courses, les équipes participantes et leurs temps.',
+    realisation: 'J’ai développé un système permettant d’inscrire un jockey, de l’associer à un cheval pour une course et de générer un numéro de dossard temporaire. Après la course, le cheval et le jockey peuvent être réaffectés à une nouvelle course.',
+    appris: 'Ce projet m’a permis de me perfectionner en PHP et de mieux maîtriser l’architecture MVC.',
+    missions: ['Inscription des jockeys', 'Association jockey / cheval / course', 'Génération de numéro de dossard', 'Réaffectation après une course']
+  },
+  ap4: {
+    kicker: 'AP4 · Projet Sigeansud',
+    title: 'Application Android pour la gestion des animaux',
+    tags: ['Android', 'SQLite', 'API REST', 'Symfony 7', 'MySQL', 'Maquettage'],
+    contexte: 'Dans le cadre du BTS SIO, le projet Sigeansud consistait à développer une solution applicative pour un parc animalier afin de digitaliser et fiabiliser la gestion du placement des animaux, des entrées, des sorties et des transferts entre enclos.',
+    realisation: 'Je me suis principalement occupé de la partie Android destinée aux soignants. L’application permet de travailler depuis le terrain : connexion du soignant, consultation des espèces affectées, placement d’un animal dans un enclos, transfert vers un autre enclos et retrait d’un animal décédé.',
+    appris: 'Ce projet m’a permis de progresser sur le développement mobile Android, l’utilisation de SQLite pour conserver les informations du soignant connecté, la communication avec une API REST distante et la conception d’une interface adaptée à un usage terrain.',
+    missions: ['Développement de la partie Android', 'Mise en place de la première connexion soignant', 'Stockage local des données avec SQLite', 'Consultation des espèces affectées au soignant', 'Saisie des placements et transferts d’animaux', 'Envoi des opérations vers l’API REST', 'Participation au maquettage de l’application mobile']
+  },
+  nomad: {
+    kicker: 'Stage · Nomad Barber Shop',
+    title: 'Site vitrine responsive pour un salon de coiffure',
+    tags: ['HTML', 'CSS', 'Responsive', 'UX/UI', 'Hébergement'],
+    contexte: 'Nomad Barber avait besoin d’un site internet pour renforcer sa visibilité, présenter ses services, tarifs et horaires, attirer de nouveaux clients et valoriser l’image de l’entreprise.',
+    realisation: 'J’ai réalisé complètement le site vitrine de l’entreprise, participé aux échanges avec le gérant pour recueillir les besoins, adapté le design et optimisé le site pour smartphone, tablette et ordinateur.',
+    appris: 'J’ai compris l’importance de bien structurer un projet, de créer une interface claire et ergonomique, de respecter une identité visuelle et d’approfondir mes connaissances sur l’hébergement d’un site web.',
+    missions: ['Recueil des besoins', 'Création des pages du site vitrine', 'Design responsive', 'Respect de l’identité visuelle', 'Livraison dans les délais']
+  },
+  hopital: {
+    kicker: 'Stage · Centre Hospitalier de Cholet',
+    title: 'Application web de gestion des astreintes médicales',
+    tags: ['PHP', 'HTML/CSS', 'JavaScript', 'Apache', 'NTLM', 'Chromium'],
+    contexte: 'Le projet portait sur la conception d’outils web pour répondre à des besoins métiers en milieu hospitalier, avec une attention particulière à la sécurité et à la gestion des droits.',
+    realisation: 'J’ai travaillé sur une application web dédiée à la gestion des astreintes médicales, sur la configuration d’un serveur Apache avec authentification NTLM, ainsi que sur une extension pour navigateur Chromium intégrant des commandes vocales.',
+    appris: 'Ce stage m’a permis de renforcer mes compétences en développement back-end, intégration front-end, configuration serveur, authentification et automatisation via extension navigateur.',
+    missions: ['Développement back-end PHP', 'Interfaces HTML/CSS/JavaScript', 'Configuration Apache', 'Authentification NTLM', 'Extension Chromium avec commandes vocales']
+  }
+};
+
+const modal = document.getElementById('projectModal');
+const modalKicker = document.getElementById('modalKicker');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+
+function openProject(key) {
+  const p = projects[key];
+  if (!p) return;
+  modalKicker.textContent = p.kicker;
+  modalTitle.textContent = p.title;
+  modalBody.innerHTML = `
+    <div class="modal-tags">${p.tags.map(tag => `<span class="ptag">${tag}</span>`).join('')}</div>
+    <div class="modal-grid">
+      <div class="modal-box"><h4>Contexte</h4><p>${p.contexte}</p></div>
+      <div class="modal-box"><h4>Ce que j’ai réalisé</h4><p>${p.realisation}</p></div>
+      <div class="modal-box"><h4>Ce que j’ai appris</h4><p>${p.appris}</p></div>
+    </div>
+    <div class="modal-box">
+      <h4>Missions principales</h4>
+      <ul class="modal-list">${p.missions.map(item => `<li>${item}</li>`).join('')}</ul>
+    </div>
+  `;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProject() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.project-item').forEach(btn => {
+  btn.addEventListener('click', () => openProject(btn.dataset.project));
+});
+
+document.querySelectorAll('[data-close="true"]').forEach(el => el.addEventListener('click', closeProject));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+
+const hl = document.getElementById('heroLines');
+for (let i = 1; i <= 80; i++) {
+  const d = document.createElement('div');
+  d.className = 'hero-ln';
+  d.textContent = i;
+  hl.appendChild(d);
+}
+
+function buildSectionLines() {
+  ['aboutLn','cvLn','parcoursLn','projetsLn','compLn','veilleLn','contactLn'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = '';
+    const parent = el.closest('.section');
+    const h = parent ? parent.offsetHeight : 600;
+    const count = Math.ceil(h / 22.75) + 10;
+    for (let i = 1; i <= count; i++) {
+      const d = document.createElement('div');
+      d.className = 'section-ln';
+      d.textContent = i;
+      el.appendChild(d);
+    }
+  });
+}
+window.addEventListener('load', buildSectionLines);
+window.addEventListener('resize', buildSectionLines);
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+function handleForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const nom = encodeURIComponent(form.nom.value.trim());
+  const email = encodeURIComponent(form.email.value.trim());
+  const sujet = encodeURIComponent(form.sujet.value.trim() || 'Contact portfolio');
+  const message = encodeURIComponent(form.message.value.trim() + '\n\nRéponse à : ' + form.email.value.trim() + '\nNom : ' + form.nom.value.trim());
+  window.location.href = `mailto:jilanimus@gmail.com?subject=${sujet}&body=${message}`;
+  const btn = form.querySelector('.btn-submit');
+  const orig = btn.textContent;
+  btn.textContent = 'ouverture de votre messagerie ✓';
+  btn.style.background = '#3cb85c';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; form.reset(); }, 3000);
+}
+</script>
+</body>
+</html>
