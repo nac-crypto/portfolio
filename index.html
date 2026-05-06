@@ -290,6 +290,19 @@ nav {
 .cert-name { font-size: 12px; font-weight: 500; color: var(--ink); line-height: 1.4; }
 .cert-source { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: var(--sans); }
 
+.veille-method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 860px; margin: 22px 0 28px; }
+.veille-card { border: 1px solid var(--rule); border-radius: var(--r); background: var(--bg); overflow: hidden; transition: all 0.15s; }
+.veille-card:hover { border-color: var(--ink); background: var(--bg2); }
+.veille-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px; background: var(--bg2); border-bottom: 1px solid var(--rule); }
+.veille-card-head h3 { font-size: 11px; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; }
+.veille-card-head span { font-size: 10px; color: var(--muted); }
+.veille-card p { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--ink2); line-height: 1.7; padding: 14px; }
+.veille-synthese { border: 1px solid var(--rule); border-radius: var(--r); max-width: 860px; margin-top: 28px; overflow: hidden; background: var(--bg); }
+.veille-synthese-head { background: var(--bg2); border-bottom: 1px solid var(--rule); padding: 10px 16px; font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.veille-synthese-body { padding: 18px 20px; display: grid; gap: 12px; }
+.veille-synthese-body p { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--ink2); line-height: 1.8; }
+.veille-synthese-body strong { font-weight: 500; color: var(--ink); }
+
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 780px; }
 .contact-links-col { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
 .contact-link-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--rule); transition: background 0.15s; text-decoration: none; color: inherit; }
@@ -391,7 +404,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--rule); disp
   .section { grid-template-columns: 1fr; }
   .section-ln-col, .section-sidebar { display: none; }
   .section-body { padding: 48px 28px; }
-  .cv-grid, .contact-grid, .skills-cols, .certs-grid, .modal-grid { grid-template-columns: 1fr; }
+  .cv-grid, .contact-grid, .skills-cols, .certs-grid, .modal-grid, .veille-method-grid { grid-template-columns: 1fr; }
   .about-row, .tl-item { grid-template-columns: 1fr; }
   .about-key, .tl-year { border-right: 0; border-bottom: 1px solid var(--rule); }
   .project-desc, .project-tags { padding-left: 0; }
@@ -724,6 +737,23 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--rule); disp
     <p class="about-text reveal">Cette veille technologique porte sur <strong>l’impact de l’intelligence artificielle générative sur le développement logiciel</strong>. Elle suit l’évolution des assistants de code, leurs apports pour la productivité, mais aussi leurs limites en matière de qualité, sécurité et esprit critique.</p>
     <p class="about-text reveal">L’objectif est de comprendre comment les outils comme ChatGPT, GitHub Copilot ou les agents IA modifient le métier de développeur : génération de code, aide au débogage, documentation, tests automatisés et revue de code.</p>
 
+    <div class="certs-section-title reveal">Comment j’ai réalisé ma veille</div>
+    <div class="veille-method-grid reveal">
+      <div class="veille-card">
+        <div class="veille-card-head"><h3>Feedly</h3><span>flux RSS</span></div>
+        <p>J’ai utilisé Feedly pour centraliser des sources spécialisées sur le développement logiciel, l’intelligence artificielle et la cybersécurité. Cela me permet de suivre régulièrement les nouveaux articles sans devoir consulter chaque site séparément.</p>
+      </div>
+      <div class="veille-card">
+        <div class="veille-card-head"><h3>Google Alertes</h3><span>mots-clés</span></div>
+        <p>J’ai créé des alertes autour de mots-clés comme “IA générative développement logiciel”, “GitHub Copilot”, “AI coding assistant” et “sécurité code IA” afin de recevoir des contenus récents sur le sujet.</p>
+      </div>
+      <div class="veille-card">
+        <div class="veille-card-head"><h3>Sources professionnelles</h3><span>tri manuel</span></div>
+        <p>J’ai consulté des sources reconnues comme GitHub, Microsoft, OpenSSF, Orange ou METR. J’ai sélectionné les articles selon leur date, leur fiabilité et leur lien direct avec le métier de développeur.</p>
+      </div>
+    </div>
+
+    <div class="certs-section-title reveal">Articles suivis</div>
     <div class="projects-list reveal">
       <a class="project-item" href="https://github.blog/ai-and-ml/generative-ai/how-ai-is-reshaping-developer-choice-and-octoverse-data-proves-it/" target="_blank" rel="noopener">
         <div class="project-main">
@@ -771,7 +801,14 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--rule); disp
       </a>
     </div>
 
-    <p class="about-text reveal" style="margin-top:28px;">Grâce à cette veille, je constate que l’IA générative devient un outil d’assistance puissant, mais qu’elle ne remplace pas les compétences fondamentales du développeur. Elle nécessite toujours une analyse humaine, des tests, une compréhension du besoin métier et une vigilance sur la sécurité.</p>
+    <div class="veille-synthese reveal">
+      <div class="veille-synthese-head">Synthèse de la veille</div>
+      <div class="veille-synthese-body">
+        <p><strong>L’IA générative transforme le développement logiciel</strong> en assistant les développeurs dans l’écriture de code, la recherche d’erreurs, la documentation, les tests et la compréhension de projets existants. Elle permet de gagner du temps sur certaines tâches répétitives et d’améliorer la productivité lorsque le besoin est bien défini.</p>
+        <p>Cependant, cette veille montre aussi que l’IA ne remplace pas le développeur. Le code généré doit être relu, testé et sécurisé, car il peut contenir des erreurs, des failles ou des solutions mal adaptées au contexte du projet. Le rôle du développeur évolue donc vers davantage d’analyse, de supervision, de validation et de prise de décision.</p>
+        <p>Pour moi, l’IA générative est un outil d’aide au développement très utile, mais elle doit être utilisée avec méthode. Elle renforce l’importance des compétences fondamentales : comprendre le besoin utilisateur, maîtriser les bases du code, structurer une application, vérifier la sécurité et garder un esprit critique face aux réponses générées.</p>
+      </div>
+    </div>
   </div>
 </div>
 
